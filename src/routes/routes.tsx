@@ -1,8 +1,7 @@
 // src/routes/routes.tsx
 import {createBrowserRouter } from "react-router-dom";
-import Login from "../view/Login/login";
+import Login from "../viewModel/loginViewModel";
 import Register from "../view/Register/register";
-import Dashboard from "../view/Dashboard/dashboard";
 // import NotFound from "../pages/NotFound";
 
 const Routes = createBrowserRouter([
@@ -15,10 +14,6 @@ const Routes = createBrowserRouter([
         element: <Register />
     },
 
-    {
-        path: "/dashboard",
-        element: <Dashboard />
-    },
 ]);
 
 
