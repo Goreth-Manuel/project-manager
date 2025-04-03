@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useLoginViewModel from "../../model/useLoginModel";
+import useLoginModel from "../../model/useLoginModel";
 import InputField from "../../components/InputField/InputField";
 
 import { 
@@ -17,7 +17,7 @@ import {
   ParagraphRegistration
 } from "./style";
 
-const LoginView = ({formData, errors, handleChange, handleSubmit}:ReturnType<typeof useLoginViewModel>) => {
+const LoginView = ({formData, errors, handleChange, handleSubmit}:ReturnType<typeof useLoginModel>) => {
  
   return (
     <Main>

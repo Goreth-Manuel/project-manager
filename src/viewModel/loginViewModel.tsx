@@ -1,9 +1,9 @@
-import useLoginViewModel from "../model/useLoginModel"
+import useLoginModel from "../model/useLoginModel"
 import LoginView from "../view/Login/loginView"
 
 
 function Login() {
-    const loginModel = useLoginViewModel();
+    const loginModel = useLoginModel();
 
     return(
        <LoginView 

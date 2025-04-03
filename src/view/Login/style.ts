@@ -51,17 +51,6 @@ export const Paragraph = styled.p`
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 `;
 
-// export const Label = styled.label`
-//  font-size: 12px;
-// `;
-
-// export const Input = styled.input`
-//   width: 26rem;
-//   padding: 15px;
-//   margin-top: 5px;
-//   margin-bottom: 1rem;
-//   border-radius: 5px;
-// `;
 
 export const Span = styled.span`
  color: #0047AB;
