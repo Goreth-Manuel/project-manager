@@ -16,21 +16,24 @@ export const registerUser = async (name: string, email: string, password: string
   };
   
   export const loginUser = async (email: string, password: string) => {
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
   
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error);
-    }
+    const predefinedEmail = "admin@gmail.com";
+    const predefinedPassword = "123456";
   
-    return response.json(); // Retorna o token e outras informações do usuário
-  };
+    if (email === predefinedEmail && password === predefinedPassword) {
+      const mockResponse = {
+        token: "mockToken123456", 
+        user: {
+          name: "Admin",
+          email: predefinedEmail,
+        },
+      };
+  
+      return Promise.resolve(mockResponse);
+    } else {
 
+      return Promise.reject(new Error("Credenciais inválidas"));
+    }
+  };
   
   
