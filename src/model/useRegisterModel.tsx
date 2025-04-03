@@ -1,26 +1,33 @@
 import { useState, ChangeEvent, FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { loginUser } from "../api/authService";
+import { registerUser } from "../api/authService";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
+  name: string;
   email: string;
   password: string;
 }
 
 interface Errors {
+  name: string;
   email: string;
   password: string;
 }
 
-const useLoginModel = () => {
-  const [formData, setFormData] = useState<FormData>({ email: "", password: "" });
-  const [errors, setErrors] = useState<Errors>({ email: "", password: "" });
+const useRegisterModel = () => {
+  const [formData, setFormData] = useState<FormData>({ name: "", email: "", password: "" });
+  const [errors, setErrors] = useState<Errors>({ name: "", email: "", password: "" });
   const navigate = useNavigate();
 
   const validate = (): boolean => {
     let valid = true;
-    const newErrors: Errors = { email: "", password: "" };
+    const newErrors: Errors = { name: "", email: "", password: "" };
+
+    if (!formData.name) {
+      newErrors.name = "O nome é obrigatório.";
+      valid = false;
+    }
 
     if (!formData.email) {
       newErrors.email = "O e-mail é obrigatório.";
@@ -51,16 +58,14 @@ const useLoginModel = () => {
     if (!validate()) return;
 
     try {
-      const data = await loginUser(formData.email, formData.password);
-      localStorage.setItem("token", data.token);
-      toast.success("Login realizado com sucesso!");
+      await registerUser(formData.name, formData.email, formData.password);
+      toast.success("Cadastro realizado com sucesso!");
       navigate("/dashboard");
     } catch (error) {
-      toast.error("Erro ao fazer login: " + (error as Error).message);
+      toast.error("Erro ao cadastrar: " + (error as Error).message);
     }
   };
-
   return { formData, errors, handleChange, handleSubmit };
 };
 
-export default useLoginModel;
+export default useRegisterModel;
