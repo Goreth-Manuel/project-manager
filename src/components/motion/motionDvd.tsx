@@ -1,13 +1,16 @@
 import { useDvdScreensaver } from "react-dvd-screensaver";
-
+import {
+  Span,
+  DivContainer
+} from "./style"
 
 const MotionDvd = () => {
     const { containerRef, elementRef } = useDvdScreensaver();
 
   return (
-    <div ref={containerRef} style={{width: "100%", height: "100%", position: "absolute", top: 0, left: 0, zIndex: -1}}>
-        <span ref={elementRef} style={{display: "inline-block"}}>Testando</span> 
-    </div>
+    <DivContainer ref={containerRef} style={{ top: 0, left: 0, zIndex: -1}}>
+        <Span ref={elementRef}>Testando</Span> 
+    </DivContainer>
   );
 };
 
