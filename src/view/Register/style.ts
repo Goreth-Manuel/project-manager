@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
- height: 32rem;
+ height: 80vh;
  width: 28rem;
 `;
 

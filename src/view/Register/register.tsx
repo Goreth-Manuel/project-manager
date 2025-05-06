@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import useRegisterModel from "../../model/useRegisterModel"; 
 import InputField from "../../components/InputField/InputField";
+import { Typewriter } from 'react-simple-typewriter'
+
 import {
   H1,
   Main,
@@ -22,7 +24,17 @@ const RegisterView = ({formData, errors, handleChange, handleSubmit}: ReturnType
         <BackgroundImage />
 
         <Form onSubmit={handleSubmit} noValidate>
-          <H1>Go-Task - Cadastro</H1>
+          <H1>
+          <Typewriter
+          words={['Crie uma conta!']}
+          loop={true}
+          cursor
+          cursorStyle="|"
+          typeSpeed={65}
+          deleteSpeed={50}
+          delaySpeed={1000}
+        />
+          </H1>
           <Paragraph>
             Preencha as informações abaixo para criar sua conta e começar a organizar suas tarefas de forma simples e eficiente.
           </Paragraph>

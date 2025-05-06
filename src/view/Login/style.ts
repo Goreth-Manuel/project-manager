@@ -76,11 +76,11 @@ margin-right: 5px;
 export const Button = styled.button`
   width: 26rem;
   color: white;
-  padding: 15px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 12px;
   margin-top: 5px;
 
   background-color: #0047AB;
