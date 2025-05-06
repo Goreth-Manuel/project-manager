@@ -18,6 +18,7 @@
     "@material-tailwind/react": "^2.1.10",
     "chart.js": "^4.4.8",
     "framer-motion": "^12.9.7",
+    "jsonwebtoken": "^9.0.2",
     "miragejs": "^0.1.48",
     "react": "^19.0.0",
     "react-chartjs-2": "^5.3.0",
