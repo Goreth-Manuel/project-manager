@@ -6,6 +6,14 @@ export const Input = styled.input`
   margin-top: 8px;
   border-radius: 5px;
   margin-bottom: 5px;
+  border: none;
+  outline: none;
+  border: 2px solid #2196F3;
+
+  &:focus {
+   border-color: #2196F3; 
+   box-shadow: 0 0 4px rgba(33, 150, 243, 0.6);
+  }
 `;
 
 export const Label = styled.label`

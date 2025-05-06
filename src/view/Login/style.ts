@@ -11,8 +11,9 @@ height: 100vh;
 
 export const Container = styled.div`
 margin: 0;
-width: 80%;
-height: 80vh;
+padding: 10px;
+width: 80vw;
+height: 90vh;
  display: flex;
  justify-content: center;
  align-items: Center;
@@ -26,18 +27,18 @@ export const BackgroundImage = styled.div`
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
-  height: 34rem;
+  height: 80vh;
   margin-right: 60px;
 `;
 
 export const Form = styled.form`
- height: 28rem;
+ height: 75vh;
  width: 28rem;
 `;
 
 export const H1 = styled.h1`
   color: #0047AB;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 `;
 
 export const Strong = styled.strong`
@@ -46,7 +47,7 @@ export const Strong = styled.strong`
 
 export const Paragraph = styled.p`
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 14px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 `;
@@ -55,7 +56,6 @@ export const Paragraph = styled.p`
 export const Span = styled.span`
  color: #0047AB;
  font-size: 12px;
-margin-top: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,8 +66,6 @@ export const LabelRemember = styled.label`
   display: flex;
   align-items: center;
   cursor: pointer;
-
-  
 `;
 
 export const InputRemember= styled.input`
@@ -83,7 +81,7 @@ export const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   font-size: 15px;
-  margin-top: 10px;
+  margin-top: 5px;
 
   background-color: #0047AB;
   &:hover {
@@ -99,7 +97,7 @@ export const Button = styled.button`
 export const ParagraphRegistration = styled.p`
   font-size: 14px;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 12px;
 `;
 

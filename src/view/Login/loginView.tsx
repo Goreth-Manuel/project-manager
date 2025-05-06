@@ -29,17 +29,17 @@ const LoginView = ({formData, errors, handleChange, handleSubmit}:ReturnType<typ
       <Form onSubmit={handleSubmit} noValidate>
         <H1>
           <Typewriter
-          words={['Bem-vindo ao Go-Task']}
+          words={['Bem-vindo ao Go-Task!']}
           loop={true}
           cursor
           cursorStyle="|"
-          typeSpeed={65} // velocidade da digitação
+          typeSpeed={65}
           deleteSpeed={50}
           delaySpeed={1000}
         />
         </H1>
         <Paragraph>
-          a melhor plataforma de gestão de tarefas,<br/> aqui você organiza, prioriza e realiza. 
+          A melhor plataforma de gestão de tarefas,<br/> aqui você organiza, prioriza e realiza. 
           <Strong> Entre agora!</Strong> 
         </Paragraph>
       
