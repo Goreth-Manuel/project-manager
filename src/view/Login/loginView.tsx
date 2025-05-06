@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import useLoginModel from "../../model/useLoginModel";
 import InputField from "../../components/InputField/InputField";
+import { Typewriter } from 'react-simple-typewriter'
+
 
 import { 
   H1,
@@ -25,9 +27,19 @@ const LoginView = ({formData, errors, handleChange, handleSubmit}:ReturnType<typ
       <BackgroundImage/>
 
       <Form onSubmit={handleSubmit} noValidate>
-        <H1>Go-Task</H1>
+        <H1>
+          <Typewriter
+          words={['Bem-vindo ao Go-Task']}
+          loop={true}
+          cursor
+          cursorStyle="|"
+          typeSpeed={65} // velocidade da digitação
+          deleteSpeed={50}
+          delaySpeed={1000}
+        />
+        </H1>
         <Paragraph>
-          Seja benvindo a melhor plataforma de gestão de tarefas,<br/> aqui você organiza, prioriza e realiza. 
+          a melhor plataforma de gestão de tarefas,<br/> aqui você organiza, prioriza e realiza. 
           <Strong> Entre agora!</Strong> 
         </Paragraph>
       

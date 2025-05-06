@@ -9,8 +9,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #dcdc;
+    background-color: #acac;
     font-family: Arial, sans-serif;
+    position: relative;
+    z-index: 1;
   }
 `;
 
