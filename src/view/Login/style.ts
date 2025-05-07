@@ -6,7 +6,7 @@ width: 100%;
 height: 100vh;
  display: flex;
  justify-content: center;
- align-items: Center;
+ align-items: center;
 `;
 
 export const Container = styled.div`
@@ -16,24 +16,30 @@ width: 80vw;
 height: 90vh;
  display: flex;
  justify-content: center;
- align-items: Center;
+ align-items: center;
  background-color: #ffffff;
  border-radius: 5px;
 `;
 
 export const BackgroundImage = styled.div`
-  width: 50%;
+  width: 60%;
+  height: 100%;
   background-image: url('/management.svg');
-  background-size: cover; 
+  background-size: contain; 
   background-position: center; 
   background-repeat: no-repeat;
-  height: 80vh;
-  margin-right: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Form = styled.form`
- height: 75vh;
- width: 28rem;
+ height: auto;
+  width: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 8rem;
 `;
 
 export const H1 = styled.h1`
@@ -76,7 +82,7 @@ margin-right: 5px;
 export const Button = styled.button`
   width: 26rem;
   color: white;
-  padding: 10px;
+  padding: 14px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
