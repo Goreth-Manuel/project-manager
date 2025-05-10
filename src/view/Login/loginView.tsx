@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import useLoginModel from "../../model/useLoginModel";
 import InputField from "../../components/InputField/InputField";
-import { Typewriter } from 'react-simple-typewriter'
-
+import { Typewriter } from 'react-simple-typewriter';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import { 
   H1,
@@ -20,6 +20,7 @@ import {
 } from "./style";
 
 const LoginView = ({formData, errors, handleChange, handleSubmit}:ReturnType<typeof useLoginModel>) => {
+
  
   return (
     <Main>
