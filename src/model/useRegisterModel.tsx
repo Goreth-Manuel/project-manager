@@ -1,8 +1,11 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { toast } from "react-toastify";
-//import { registerUser } from "../api/authService";
 import { useNavigate } from "react-router-dom";
-import { auth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../firebaseConfig"; 
+import {
+  createUserWithEmailAndPassword,
+  updateProfile
+} from "firebase/auth";
 
 interface FormData {
   name: string;
@@ -17,8 +20,18 @@ interface Errors {
 }
 
 const useRegisterModel = () => {
-  const [formData, setFormData] = useState<FormData>({ name: "", email: "", password: "" });
-  const [errors, setErrors] = useState<Errors>({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    password: ""
+  });
+
+  const [errors, setErrors] = useState<Errors>({
+    name: "",
+    email: "",
+    password: ""
+  });
+
   const navigate = useNavigate();
 
   const validate = (): boolean => {
@@ -60,15 +73,19 @@ const useRegisterModel = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-       if (auth.currentUser) {
-      await updateProfile(auth.currentUser, { displayName: name });
-    }
+      if (auth.currentUser) {
+        await updateProfile(auth.currentUser, {
+          displayName: formData.name
+        });
+      }
+
       toast.success("Cadastro realizado com sucesso!");
       navigate("/dashboard");
     } catch (error) {
       toast.error("Erro ao cadastrar: " + (error as Error).message);
     }
   };
+
   return { formData, errors, handleChange, handleSubmit };
 };
 

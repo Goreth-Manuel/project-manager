@@ -2,7 +2,6 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { loginUser } from "../api/authService";
-import {  getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 interface FormData {
   email: string;
@@ -18,19 +17,6 @@ const useLoginModel = () => {
   const [formData, setFormData] = useState<FormData>({ email: "", password: "" });
   const [errors, setErrors] = useState<Errors>({ email: "", password: "" });
   const navigate = useNavigate();
-
-   const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed up 
-      const user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
 
   const validate = (): boolean => {
     let valid = true;
@@ -57,7 +43,8 @@ const useLoginModel = () => {
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
