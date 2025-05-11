@@ -1,7 +1,8 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { toast } from "react-toastify";
-import { registerUser } from "../api/authService";
+//import { registerUser } from "../api/authService";
 import { useNavigate } from "react-router-dom";
+import { auth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 interface FormData {
   name: string;
@@ -58,7 +59,10 @@ const useRegisterModel = () => {
     if (!validate()) return;
 
     try {
-      await registerUser(formData.name, formData.email, formData.password);
+      await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+       if (auth.currentUser) {
+      await updateProfile(auth.currentUser, { displayName: name });
+    }
       toast.success("Cadastro realizado com sucesso!");
       navigate("/dashboard");
     } catch (error) {
