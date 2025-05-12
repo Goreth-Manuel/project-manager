@@ -1,5 +1,5 @@
 import useRegisterModel from "../model/useRegisterModel";
-import RegisterView from "../view/Register/register";
+import RegisterView from "../view/Register/registerView";
 
 
 function Register() {
@@ -9,8 +9,6 @@ function Register() {
        <RegisterView
        {...registerModel}
        />
-       
-       
     )
 }
 export default  Register;

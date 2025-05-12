@@ -6,38 +6,45 @@ width: 100%;
 height: 100vh;
  display: flex;
  justify-content: center;
- align-items: Center;
+ align-items: center;
 `;
 
 export const Container = styled.div`
 margin: 0;
-width: 80%;
-height: 80vh;
+padding: 10px;
+width: 80vw;
+height: 90vh;
  display: flex;
  justify-content: center;
- align-items: Center;
+ align-items: center;
  background-color: #ffffff;
  border-radius: 5px;
 `;
 
 export const BackgroundImage = styled.div`
-  width: 50%;
+  width: 60%;
+  height: 100%;
   background-image: url('/management.svg');
-  background-size: cover; 
+  background-size: contain; 
   background-position: center; 
   background-repeat: no-repeat;
-  height: 34rem;
-  margin-right: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Form = styled.form`
- height: 28rem;
- width: 28rem;
+ height: auto;
+  width: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 8rem;
 `;
 
 export const H1 = styled.h1`
   color: #0047AB;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 `;
 
 export const Strong = styled.strong`
@@ -46,7 +53,7 @@ export const Strong = styled.strong`
 
 export const Paragraph = styled.p`
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   font-size: 14px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 `;
@@ -55,7 +62,6 @@ export const Paragraph = styled.p`
 export const Span = styled.span`
  color: #0047AB;
  font-size: 12px;
-margin-top: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,8 +72,6 @@ export const LabelRemember = styled.label`
   display: flex;
   align-items: center;
   cursor: pointer;
-
-  
 `;
 
 export const InputRemember= styled.input`
@@ -78,12 +82,12 @@ margin-right: 5px;
 export const Button = styled.button`
   width: 26rem;
   color: white;
-  padding: 15px;
+  padding: 14px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 15px;
-  margin-top: 10px;
+  font-size: 12px;
+  margin-top: 5px;
 
   background-color: #0047AB;
   &:hover {
@@ -99,7 +103,7 @@ export const Button = styled.button`
 export const ParagraphRegistration = styled.p`
   font-size: 14px;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 12px;
 `;
 

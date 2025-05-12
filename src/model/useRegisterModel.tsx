@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { toast } from "react-toastify";
-import { registerUser } from "../api/authService";
 import { useNavigate } from "react-router-dom";
+import { registerUser } from "../api/authService";
 
 interface FormData {
   name: string;
@@ -16,8 +16,18 @@ interface Errors {
 }
 
 const useRegisterModel = () => {
-  const [formData, setFormData] = useState<FormData>({ name: "", email: "", password: "" });
-  const [errors, setErrors] = useState<Errors>({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    password: ""
+  });
+
+  const [errors, setErrors] = useState<Errors>({
+    name: "",
+    email: "",
+    password: ""
+  });
+
   const navigate = useNavigate();
 
   const validate = (): boolean => {
@@ -58,13 +68,13 @@ const useRegisterModel = () => {
     if (!validate()) return;
 
     try {
-      await registerUser(formData.name, formData.email, formData.password);
-      toast.success("Cadastro realizado com sucesso!");
-      navigate("/dashboard");
+      await registerUser(formData.name, formData.email, formData.password, navigate);
     } catch (error) {
-      toast.error("Erro ao cadastrar: " + (error as Error).message);
+      toast.error("Erro inesperado no cadastro. Tente novamente.");
+      console.error(error);
     }
   };
+
   return { formData, errors, handleChange, handleSubmit };
 };
 

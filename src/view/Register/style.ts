@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
- height: 32rem;
- width: 28rem;
+ height: auto;
+  width: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 8rem;
 `;
 
 
