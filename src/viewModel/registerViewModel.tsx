@@ -9,8 +9,6 @@ function Register() {
        <RegisterView
        {...registerModel}
        />
-       
-       
     )
 }
 export default  Register;
