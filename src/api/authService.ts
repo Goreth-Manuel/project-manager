@@ -1,39 +1,63 @@
-export const registerUser = async (name: string, email: string, password: string) => {
-    const response = await fetch("/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password }),
-    });
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../firebaseConfig";
+import { setDoc, doc } from "firebase/firestore";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile
+} from "firebase/auth";
+import { toast } from "react-toastify";
+
+
+export const registerUser = async (
+  name: string, 
+  email: string, 
+  password: string,
+  navigate: (path: string) => void
+) => {
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
   
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error);
-    }
+      
+          await updateProfile(user, {
+            displayName: name
+          });
   
-    return response.json();
-  };
+            // Salvar dados adicionais no Firestore
+            await setDoc(doc(db, "users", user.uid), {
+              name: name,
+              email: email,
+              createdAt: new Date()
+            });
+     
+        toast.success("Cadastro realizado com sucesso!");
+        navigate("/dashboard");
+      } catch (error) {
+        toast.error("Erro ao cadastrar: " + (error as Error).message);
+      }
+    };
+  
   
   export const loginUser = async (email: string, password: string) => {
-  
-    const predefinedEmail = "admin@gmail.com";
-    const predefinedPassword = "123456";
-  
-    if (email === predefinedEmail && password === predefinedPassword) {
-      const mockResponse = {
-        token: "mockToken123456", 
-        user: {
-          name: "Admin",
-          email: predefinedEmail,
-        },
-      };
-  
-      return Promise.resolve(mockResponse);
-    } else {
+    try {
+      const userCredentialLogin = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredentialLogin.user;
 
-      return Promise.reject(new Error("Credenciais inválidas"));
+      return {
+        uid: user.uid,
+        email: user.email,
+        token: await user.getIdToken()
+      };
+    } catch (error: any) {
+      if (error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
+        throw new Error("E-mail ou senha incorretos.");
+      } else {
+        throw new Error(error.message);
+      }
     }
+  
+   
   };
   
   
