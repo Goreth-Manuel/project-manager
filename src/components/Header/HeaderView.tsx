@@ -13,6 +13,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 const HeaderView: React.FC = () => {
   const { notifications, profileImage } = useHeaderViewModel();
   const auth = useContext(AuthContext);
+   console.log("Nome do user no header", auth.user);
 
   return (
     <HeaderContainer>
@@ -31,6 +32,7 @@ const HeaderView: React.FC = () => {
           </NotificationIcon>
         ))}
         {auth.user?.name}  bem vinda
+       
         <ProfilePicture src={profileImage} alt="User Profile" />
       </IconsContainer>
     </HeaderContainer>

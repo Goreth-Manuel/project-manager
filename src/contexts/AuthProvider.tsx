@@ -8,21 +8,21 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
     const [user, setUser] = useState<User | null>(null);
     const navigate = useNavigate();
 
-     
     const register = async (name: string, email: string, password: string): Promise<boolean> => {
         try {
-            await registerUser(name, email, password, () => {}); // passar uma função vazia pro navigate
+            await registerUser(name, email, password); // passar uma função vazia pro navigate
       
             // Após registrar, faça login para obter token e preencher o contexto
             const loginResponse = await loginUser(email, password);
+            console.log("Login response após registro:", loginResponse);
             setUser({
               uid: loginResponse.uid,
               email: loginResponse.email!,
-              name, // já sabemos o nome, passamos na função
+              name: loginResponse.name || name,
               token: loginResponse.token,
             });
       
-            navigate("/dashboard"); // navegar manualmente agora
+            navigate("/dashboard"); 
             return true;
           } catch (error) {
             console.error("Erro ao registrar:", error);
@@ -36,7 +36,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
             setUser({
               uid: loginResponse.uid,
               email: loginResponse.email!,
-              name: "", 
+              name: loginResponse.name || "Usuário",
               token: loginResponse.token,
             });
             return true;

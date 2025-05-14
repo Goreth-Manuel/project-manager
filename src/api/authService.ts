@@ -12,17 +12,17 @@ export const registerUser = async (
   name: string, 
   email: string, 
   password: string,
-  navigate: (path: string) => void
 ) => {
 
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-  
+        console.log("Usuário", user);
       
           await updateProfile(user, {
             displayName: name
           });
+          await user.reload();
   
             // Salvar dados adicionais no Firestore
             await setDoc(doc(db, "users", user.uid), {
@@ -30,9 +30,10 @@ export const registerUser = async (
               email: email,
               createdAt: new Date()
             });
+
+             console.log("Register Usuário", user.displayName)
      
         toast.success("Cadastro realizado com sucesso!");
-        navigate("/dashboard");
       } catch (error) {
         toast.error("Erro ao cadastrar: " + (error as Error).message);
       }
@@ -46,6 +47,7 @@ export const registerUser = async (
 
       return {
         uid: user.uid,
+        name: user.displayName || "",
         email: user.email,
         token: await user.getIdToken()
       };
