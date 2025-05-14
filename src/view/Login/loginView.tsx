@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import useLoginModel from "../../model/useLoginModel";
 import InputField from "../../components/InputField/InputField";
 import { Typewriter } from 'react-simple-typewriter';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import { 
   H1,
