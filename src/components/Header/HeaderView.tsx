@@ -28,10 +28,10 @@ const HeaderView: React.FC = () => {
         {notifications.map((notif, index) => (
           <NotificationIcon key={index}>
             <span>{notif.count}</span>
-            🛎️ {/* Ícone pode ser substituído por um componente de ícone */}
+            🛎️ 
           </NotificationIcon>
         ))}
-        {auth.user?.name}  bem vinda
+        {auth.user?.name} 
        
         <ProfilePicture src={profileImage} alt="User Profile" />
       </IconsContainer>
