@@ -4,8 +4,18 @@ import { User } from "../types/user";
 import { loginUser, registerUser } from "../api/authService";
 import { useNavigate } from "react-router-dom";
 
+// Funções auxiliares fora do componente
+const saveUserToLocalStorage = (user: User) => {
+  localStorage.setItem("authUser", JSON.stringify(user));
+};
+
+const loadUserFromLocalStorage = (): User | null => {
+  const storedUser = localStorage.getItem("authUser");
+  return storedUser ? JSON.parse(storedUser) : null;
+};
+
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() => loadUserFromLocalStorage());
   const navigate = useNavigate();
 
   const register = async (
@@ -14,17 +24,19 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     password: string
   ): Promise<boolean> => {
     try {
-      await registerUser(name, email, password); // passar uma função vazia pro navigate
+      await registerUser(name, email, password);
 
-      // Após registrar, faça login para obter token e preencher o contexto
       const loginResponse = await loginUser(email, password);
-      console.log("Login response após registro:", loginResponse);
-      setUser({
+
+      const newUser: User = {
         uid: loginResponse.uid,
         email: loginResponse.email!,
         name: loginResponse.name || name,
         token: loginResponse.token,
-      });
+      };
+
+      setUser(newUser);
+      saveUserToLocalStorage(newUser);
 
       navigate("/dashboard");
       return true;
@@ -37,12 +49,17 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const signin = async (email: string, password: string): Promise<boolean> => {
     try {
       const loginResponse = await loginUser(email, password);
-      setUser({
+
+      const newUser: User = {
         uid: loginResponse.uid,
         email: loginResponse.email!,
         name: loginResponse.name || "Usuário",
         token: loginResponse.token,
-      });
+      };
+
+      setUser(newUser);
+      saveUserToLocalStorage(newUser);
+
       return true;
     } catch (error) {
       console.error("Erro ao fazer login:", error);
@@ -52,6 +69,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   const signout = () => {
     setUser(null);
+    localStorage.removeItem("authUser");
   };
 
   return (
