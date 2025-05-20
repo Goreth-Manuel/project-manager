@@ -31,7 +31,6 @@ export const registerUser = async (
       createdAt: new Date(),
     });
 
-
     toast.success("Cadastro realizado com sucesso!");
   } catch (error) {
     toast.error("Erro ao cadastrar: " + (error as Error).message);
@@ -62,8 +61,8 @@ export const loginUser = async (email: string, password: string) => {
       token: await user.getIdToken(),
     };
     
+    
   } catch (error: any) {
-      throw new Error(error || "E-mail ou senha incorretos.");
-    } 
-  
+    throw new Error(error || "E-mail ou senha incorretos.");
+  } 
 };
