@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebaseConfig";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
 
@@ -47,10 +47,15 @@ export const loginUser = async (email: string, password: string) => {
       password
     );
     const user = userCredentialLogin.user;
+    await user.reload(); 
+
+     // Buscar o nome diretamente do Firestore
+    const docSnap = await getDoc(doc(db, "users", user.uid));
+    const firestoreName = docSnap.exists() ? docSnap.data().name : null;
 
     return {
       uid: user.uid,
-      name: user.displayName || "",
+      name: user.displayName || firestoreName,
       email: user.email,
       token: await user.getIdToken(),
     };

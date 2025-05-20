@@ -56,7 +56,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         name: loginResponse.name || "Usuário",
         token: loginResponse.token,
       };
-
       setUser(newUser);
       saveUserToLocalStorage(newUser);
 
