@@ -31,7 +31,6 @@ export const registerUser = async (
       createdAt: new Date(),
     });
 
-    console.log("Register Usuário", user.displayName);
 
     toast.success("Cadastro realizado com sucesso!");
   } catch (error) {
@@ -46,6 +45,7 @@ export const loginUser = async (email: string, password: string) => {
       email,
       password
     );
+
     const user = userCredentialLogin.user;
     await user.reload(); 
 
@@ -53,20 +53,17 @@ export const loginUser = async (email: string, password: string) => {
     const docSnap = await getDoc(doc(db, "users", user.uid));
     const firestoreName = docSnap.exists() ? docSnap.data().name : null;
 
+    console.log("Nome do usuário após login", firestoreName);
+
     return {
       uid: user.uid,
-      name: user.displayName || firestoreName,
+      name: firestoreName || user.displayName || "Usuário",
       email: user.email,
       token: await user.getIdToken(),
     };
+    
   } catch (error: any) {
-    if (
-      error.code === "auth/user-not-found" ||
-      error.code === "auth/wrong-password"
-    ) {
-      throw new Error("E-mail ou senha incorretos.");
-    } else {
-      throw new Error(error.message);
-    }
-  }
+      throw new Error(error || "E-mail ou senha incorretos.");
+    } 
+  
 };

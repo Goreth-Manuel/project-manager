@@ -53,13 +53,15 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
       const newUser: User = {
         uid: loginResponse.uid,
         email: loginResponse.email!,
-        name: loginResponse.name || "Usuário",
+        name: loginResponse.name ?? "Usuário",
         token: loginResponse.token,
       };
+      console.log("Usuário novo", newUser.name)
       setUser(newUser);
       saveUserToLocalStorage(newUser);
-
+     
       return true;
+      
     } catch (error) {
       console.error("Erro ao fazer login:", error);
       return false;
