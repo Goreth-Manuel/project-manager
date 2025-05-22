@@ -46,9 +46,9 @@ export const loginUser = async (email: string, password: string) => {
     );
 
     const user = userCredentialLogin.user;
-    await user.reload(); 
+    await user.reload();
 
-     // Buscar o nome diretamente do Firestore
+    // Buscar o nome diretamente do Firestore
     const docSnap = await getDoc(doc(db, "users", user.uid));
     const firestoreName = docSnap.exists() ? docSnap.data().name : null;
 
@@ -60,9 +60,7 @@ export const loginUser = async (email: string, password: string) => {
       email: user.email,
       token: await user.getIdToken(),
     };
-    
-    
   } catch (error: any) {
     throw new Error(error || "E-mail ou senha incorretos.");
-  } 
+  }
 };
