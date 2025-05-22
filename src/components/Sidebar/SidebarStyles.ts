@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const SidebarContainer = styled.aside<{ isCollapsed: boolean }>`
   width: ${(props) => (props.isCollapsed ? "60px" : "250px")};
-  background-color: #1e1e2d;
   color: white;
   height: 100vh;
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
+
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
 `;
 
 export const Logo = styled.div`
@@ -27,21 +28,22 @@ export const Menu = styled.nav`
 export const MenuItem = styled.div<{ active?: boolean }>`
   display: flex;
   align-items: center;
+  border: 1px solid red;
+  padding: 20px 0;
   
   cursor: pointer;
-
   a {
-    margin: 20px 0;
-    padding: 15px 15px;
-    color: ${(props) => (props.active ? "#007bff" : "white")};
-    background: ${(props) => (props.active ? "#2a2a3c" : "transparent")};
+    /* margin: 20px 0; */
+    padding: 10px 15px;
+    color: #2a2a3c;
+    font-size: 1.3rem;
     width: 20rem;
-  }
- 
 
-  &:hover {
-    background: ${(props) => (props.active ? "#013E6A" : "transparent")};
+    &:hover {
+    background: #0047AB;
     color: #fff;
+    padding: 20px 20px;
+  }
   }
 
   span {

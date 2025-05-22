@@ -4,8 +4,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #013E6A;
+  padding: 20px;
+  background-color: #0047AB;
   border-bottom: 1px solid #ddd;
   color: #fff;
 `;
@@ -13,9 +13,8 @@ export const HeaderContainer = styled.header`
 export const Logo = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
-  border: 1px solid red;
 `;
 
 export const Nav = styled.nav`
