@@ -1,8 +1,8 @@
-import { RouterProvider } from 'react-router-dom';
-import  Routes  from "./routes/routes"
+
 import { GlobalStyle } from './styles/global';
 import { makeServer } from './api/mirageServer';
 import MotionDvd from './components/motion/motionDvd';
+import AppRoutes from './routes/routes';
 
 // if (process.env.NODE_ENV === "development") {
 //   makeServer();
@@ -17,7 +17,7 @@ export default function App() {
     <div className="App" style={{position: "relative", width: "100vw", height: "100vh"}}>
       <GlobalStyle/>
       <MotionDvd/> 
-     <RouterProvider router={Routes} />
+      <AppRoutes />
     </div>
   );
 }

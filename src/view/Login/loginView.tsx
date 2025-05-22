@@ -1,50 +1,53 @@
 import { Link } from "react-router-dom";
 import useLoginModel from "../../model/useLoginModel";
 import InputField from "../../components/InputField/InputField";
-import { Typewriter } from 'react-simple-typewriter';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Typewriter } from "react-simple-typewriter";
 
-import { 
+import {
   H1,
-  Main, 
+  Main,
   Span,
-  BackgroundImage, 
-  Form, 
-  Button, 
-  Strong, 
+  BackgroundImage,
+  Form,
+  Button,
+  Strong,
   Container,
   Paragraph,
   LabelRemember,
   InputRemember,
-  ParagraphRegistration
+  ParagraphRegistration,
 } from "./style";
 
-const LoginView = ({formData, errors, handleChange, handleSubmit}:ReturnType<typeof useLoginModel>) => {
-
- 
+const LoginView = ({
+  formData,
+  errors,
+  handleChange,
+  handleSubmit,
+}: ReturnType<typeof useLoginModel>) => {
   return (
     <Main>
       <Container>
-      <BackgroundImage/>
+        <BackgroundImage />
 
-      <Form onSubmit={handleSubmit} noValidate>
-        <H1>
-          <Typewriter
-          words={['Bem-vindo ao Go-Task!']}
-          loop={true}
-          cursor
-          cursorStyle="|"
-          typeSpeed={65}
-          deleteSpeed={50}
-          delaySpeed={1000}
-        />
-        </H1>
-        <Paragraph>
-          A melhor plataforma de gestão de tarefas,<br/> aqui você organiza, prioriza e realiza. 
-          <Strong> Entre agora!</Strong> 
-        </Paragraph>
-      
-        <InputField
+        <Form onSubmit={handleSubmit} noValidate>
+          <H1>
+            <Typewriter
+              words={["Bem-vindo ao Go-Task!"]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={65}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </H1>
+          <Paragraph>
+            A melhor plataforma de gestão de tarefas,
+            <br /> aqui você organiza, prioriza e realiza.
+            <Strong> Entre agora!</Strong>
+          </Paragraph>
+
+          <InputField
             label="E-mail"
             type="email"
             name="email"
@@ -62,27 +65,23 @@ const LoginView = ({formData, errors, handleChange, handleSubmit}:ReturnType<typ
             onChange={handleChange}
             error={errors.password}
             placeholder="Digite sua senha"
-  
           />
 
-        <Span>
-          <LabelRemember>
-            <InputRemember type="checkbox" /> Remember me
+          <Span>
+            <LabelRemember>
+              <InputRemember type="checkbox" /> Remember me
+            </LabelRemember>
+            <a href=""> Forgot Password?</a>
+          </Span>
+          <br />
 
-          </LabelRemember>
-          <a href=""> Forgot Password?</a>
-        </Span>
-        <br />
+          <Button type="submit">Iniciar Sessão</Button>
 
-        <Button type="submit">
-        Iniciar Sessão
-        </Button> 
-
-        <ParagraphRegistration>
-          Don't have an account?
-          <Link to="/register"> Register</Link>
-        </ParagraphRegistration>
-      </Form>
+          <ParagraphRegistration>
+            Don't have an account?
+            <Link to="/register"> Register</Link>
+          </ParagraphRegistration>
+        </Form>
       </Container>
     </Main>
   );

@@ -1,7 +1,6 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { registerUser } from "../api/authService";
+import { AuthContext } from "../contexts/AuthContext";
 
 interface FormData {
   name: string;
@@ -28,7 +27,8 @@ const useRegisterModel = () => {
     password: ""
   });
 
-  const navigate = useNavigate();
+  const { register } = useContext(AuthContext)
+
 
   const validate = (): boolean => {
     let valid = true;
@@ -68,7 +68,10 @@ const useRegisterModel = () => {
     if (!validate()) return;
 
     try {
-      await registerUser(formData.name, formData.email, formData.password, navigate);
+      const success = await register(formData.name, formData.email, formData.password);
+      if(!success) {
+        toast.error("Erro ao registrar. Tente novamente.");
+      }
     } catch (error) {
       toast.error("Erro inesperado no cadastro. Tente novamente.");
       console.error(error);
