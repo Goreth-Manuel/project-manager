@@ -15,6 +15,7 @@ export const Logo = styled.div`
   align-items: center;
   font-size: 1.5rem;
   font-weight: bold;
+  border: 1px solid red;
 `;
 
 export const Nav = styled.nav`

@@ -1,7 +1,7 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { loginUser } from "../api/authService";
+import { AuthContext } from "../contexts/AuthContext";
 
 interface FormData {
   email: string;
@@ -17,6 +17,8 @@ const useLoginModel = () => {
   const [formData, setFormData] = useState<FormData>({ email: "", password: "" });
   const [errors, setErrors] = useState<Errors>({ email: "", password: "" });
   const navigate = useNavigate();
+
+  const { signin } = useContext(AuthContext)
 
   const validate = (): boolean => {
     let valid = true;
@@ -52,10 +54,14 @@ const useLoginModel = () => {
     if (!validate()) return;
 
     try {
-      const data = await loginUser(formData.email, formData.password);
-      localStorage.setItem("token", data.token);
+      const data = await signin(formData.email, formData.password);
+      // localStorage.setItem("token", data.token);
+      if (data) {
       toast.success("Login realizado com sucesso!");
       navigate("/dashboard");
+    } else {
+      toast.error("Falha no login. Verifique suas credenciais.");
+    }
     } catch (error) {
       toast.error("Erro ao fazer login: " + (error as Error).message);
     }

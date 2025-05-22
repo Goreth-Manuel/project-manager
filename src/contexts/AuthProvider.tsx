@@ -47,7 +47,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   const signin = async (email: string, password: string): Promise<boolean> => {
+    console.log("Iniciando login...");
     try {
+      
       const loginResponse = await loginUser(email, password);
 
       const newUser: User = {
@@ -56,11 +58,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         name: loginResponse.name ?? "Usuário",
         token: loginResponse.token,
       };
+
+      console.log("Usuário logado", newUser);
+
       setUser(newUser);
       saveUserToLocalStorage(newUser);
 
-      console.log("Usuário logado", newUser);
-     
       return true;
       
     } catch (error) {
@@ -73,10 +76,12 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     setUser(null);
     localStorage.removeItem("authUser");
   };
-
+console.log("AuthProvider montado");
   return (
     <AuthContext.Provider value={{ user, register, signin, signout }}>
       {children}
     </AuthContext.Provider>
+    
   );
+  
 };

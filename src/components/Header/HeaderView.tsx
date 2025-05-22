@@ -9,6 +9,7 @@ import {
 } from "./HeaderStyles";
 import { useHeaderViewModel } from "./HeaderViewModel";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Typewriter } from "react-simple-typewriter";
 
 const HeaderView: React.FC = () => {
   const { notifications, profileImage } = useHeaderViewModel();
@@ -17,7 +18,17 @@ const HeaderView: React.FC = () => {
 
   return (
     <HeaderContainer>
-      <Logo>Go-Task</Logo>
+      <Logo>
+        <Typewriter
+          words={['Go-Task!']}
+          loop={true}
+          cursor
+          cursorStyle="|"
+          typeSpeed={65}
+          deleteSpeed={50}
+          delaySpeed={1000}
+        />
+      </Logo>
       <Nav>
         <a href="#">Dashboard</a>
         <a href="#">Users</a>
@@ -31,7 +42,12 @@ const HeaderView: React.FC = () => {
             🛎️ 
           </NotificationIcon>
         ))}
-        {auth.user?.name} 
+        {auth.user?.name ? (
+          <span>{auth.user.name}</span>
+            ) : (
+          <span>Carregando...</span>
+        )}
+ 
        
         <ProfilePicture src={profileImage} alt="User Profile" />
       </IconsContainer>
