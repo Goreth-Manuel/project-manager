@@ -22,28 +22,31 @@ export const Logo = styled.div`
 export const Menu = styled.nav`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 0 20px;
 `;
 
 export const MenuItem = styled.div<{ active?: boolean }>`
   display: flex;
+  color: #2a2a3c;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: 20px 0;
+  margin: 5px 0;
+  transition: 0.3s ease-in-out;
+  /* margin-top: 20px; */
+
+  &:hover {
+    background: #0047AB;
+    color: red;
+    border-radius: 5px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+  }
   
   cursor: pointer;
   a {
-    /* margin: 20px 0; */
-    padding: 10px 15px;
     color: #2a2a3c;
     font-size: 1.3rem;
-    width: 20rem;
-
-    &:hover {
-    background: #0047AB;
-    color: #fff;
-    padding: 20px 20px;
-  }
+    text-decoration: none;
   }
 
   span {
