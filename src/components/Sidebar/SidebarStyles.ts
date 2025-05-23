@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const SidebarContainer = styled.aside<{ isCollapsed: boolean }>`
   width: ${(props) => (props.isCollapsed ? "60px" : "250px")};
-  background-color: #1e1e2d;
   color: white;
   height: 100vh;
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
+
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
 `;
 
 export const Logo = styled.div`
@@ -21,27 +22,34 @@ export const Logo = styled.div`
 export const Menu = styled.nav`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 0 20px;
+  margin-top: 40px;
 `;
 
 export const MenuItem = styled.div<{ active?: boolean }>`
   display: flex;
+  color: #2a2a3c;
   align-items: center;
-  
-  cursor: pointer;
-
-  a {
-    margin: 20px 0;
-    padding: 15px 15px;
-    color: ${(props) => (props.active ? "#007bff" : "white")};
-    background: ${(props) => (props.active ? "#2a2a3c" : "transparent")};
-    width: 20rem;
-  }
- 
+  padding: 20px 10px;
+  margin: 5px 0;
+  transition: 0.3s ease-in-out;
 
   &:hover {
-    background: ${(props) => (props.active ? "#013E6A" : "transparent")};
+    background: #0047AB;
     color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+
+     a {
+      color: #fff;
+    }
+  }
+  
+  cursor: pointer;
+  a {
+    color: #2a2a3c;
+    font-size: 1.3rem;
+    text-decoration: none;
   }
 
   span {

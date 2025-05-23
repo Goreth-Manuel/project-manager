@@ -14,7 +14,7 @@ const Dashboard = () => {
     <div style={{display: "flex"}}>
     <Sidebar />
       <main style={{ flexGrow: 1, padding: "20px" }}>
-        <H2>Página inicial</H2>
+        <H2>Dashboard</H2>
         <P>Visão geral de todos os projetos e estatísticas</P>
         <ProjectCard />
         <Chart />

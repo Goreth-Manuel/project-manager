@@ -16,24 +16,13 @@ export const Card = styled.li`
         margin-top: 30px;
         width: 20rem;
         height: 10rem;
-        text-align: center;
-        padding-top: 60px;
-        color: #ffffff;
+        padding: 60px;
+        color: #2a2a3c;
         border-radius: 5px;
+        background-color: #fff;
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); 
     }
 
-    .cardone {
-        background-color: #0047AB;
-    }
-
-    .cardtwo {
-        background-color: #218838;
-    }
-
-    .cardthree {
-        background-color: #c82333;
-    }
 `;
 
 export const ChartContainer = styled.div`
