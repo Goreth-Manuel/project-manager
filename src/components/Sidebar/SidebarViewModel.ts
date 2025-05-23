@@ -26,7 +26,7 @@ export interface MenuItem {
         { label: "Projectos", icon: "🎨", path: "/project", active: true },
         { label: "Detalhes", icon: "✏️", path: "/detalhes", active: true },
         { label: "Novo Projecto", icon: "📦", path: "/newProject", active: true },
-        { label: "logout", icon: "", path: "/", active: true },
+        { label: "logout", icon: "👋", path: "/", active: true },
       ],
     };
   };

@@ -23,23 +23,26 @@ export const Menu = styled.nav`
   display: flex;
   flex-direction: column;
   padding: 0 20px;
+  margin-top: 40px;
 `;
 
 export const MenuItem = styled.div<{ active?: boolean }>`
   display: flex;
   color: #2a2a3c;
   align-items: center;
-  /* border: 1px solid red; */
-  padding: 20px 0;
+  padding: 20px 10px;
   margin: 5px 0;
   transition: 0.3s ease-in-out;
-  /* margin-top: 20px; */
 
   &:hover {
     background: #0047AB;
-    color: red;
+    color: #fff;
     border-radius: 5px;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+
+     a {
+      color: #fff;
+    }
   }
   
   cursor: pointer;
