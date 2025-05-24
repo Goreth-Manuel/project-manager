@@ -12,7 +12,7 @@ const SidebarView: React.FC = () => {
   const { isCollapsed, toggleSidebar, menuItems } = useSidebarViewModel();
 
   return (
-    <SidebarContainer isCollapsed={isCollapsed}>
+    <SidebarContainer>
      
       <Menu>
         {menuItems.map((item, index) => (
@@ -24,10 +24,6 @@ const SidebarView: React.FC = () => {
           </MenuItem>
         ))}
       </Menu>
-
-      <ToggleButton onClick={toggleSidebar}>
-        {isCollapsed ? "➡️" : "⬅️"}
-      </ToggleButton>
     </SidebarContainer>
   );
 };
