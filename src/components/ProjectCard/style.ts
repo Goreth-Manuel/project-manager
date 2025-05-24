@@ -1,65 +1,63 @@
-import { styled } from 'styled-components';
+import styled from "styled-components";
 
 export const CardContainer = styled.div`
   display: flex;
   gap: 1rem;
-  padding: 20px;
-  width: 20rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-  }
-`;
-
-export const Card = styled.li`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   flex-wrap: wrap;
+  margin-top: 20px;
+`;
 
-  .cardone, .cardtwo, .cardthree {
-    margin-top: 30px;
-    width: 20rem;
-    height: 10rem;
-    padding: 60px;
-    color: #2a2a3c;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+export const StyledCard = styled.div`
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
+  flex: 1;
 
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 40px;
-    }
-
-    @media (max-width: 480px) {
-      height: auto;
-      padding: 20px;
-      font-size: 14px;
-    }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
-export const ChartContainer = styled.div`
+export const IconWrapper = styled.div<{ bgColor: string }>`
+  background-color: ${(props) => props.bgColor};
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 400px;
-  height: 400px;
+  justify-content: center;
+  margin-right: 1rem;
 
   @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    margin-left: 0;
+    margin-bottom: 10px;
+  }
+`;
+
+export const CardContent = styled.div`
+  h4 {
+    font-size: 1rem;
+    color: gray;
+    margin: 0;
   }
 
-  @media (max-width: 480px) {
-    flex-direction: column;
-    padding: 10px;
+  h2 {
+    font-size: 1.5rem;
+    margin: 5px 0;
+    color: #2a2a3c;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: #888;
+    margin: 0;
+  }
+
+  .green {
+    color: #28a745;
   }
 `;

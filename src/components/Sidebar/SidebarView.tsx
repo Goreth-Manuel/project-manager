@@ -3,13 +3,12 @@ import {
   SidebarContainer,
   Menu,
   MenuItem,
-  ToggleButton,
 } from "./SidebarStyles";
 import { useSidebarViewModel } from "./SidebarViewModel";
 import { Link } from "react-router-dom";
 
 const SidebarView: React.FC = () => {
-  const { isCollapsed, toggleSidebar, menuItems } = useSidebarViewModel();
+  const { isCollapsed, menuItems } = useSidebarViewModel();
 
   return (
     <SidebarContainer>
@@ -24,6 +23,7 @@ const SidebarView: React.FC = () => {
           </MenuItem>
         ))}
       </Menu>
+
     </SidebarContainer>
   );
 };
