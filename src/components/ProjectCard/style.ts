@@ -16,6 +16,7 @@ export const StyledCard = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   min-width: 250px;
   flex: 1;
+  height: 150px;
 
   @media (max-width: 768px) {
     flex-direction: column;
