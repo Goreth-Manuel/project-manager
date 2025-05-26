@@ -17,6 +17,7 @@ import {
   InputRemember,
   ParagraphRegistration,
 } from "./style";
+import { useTranslation } from "react-i18next";
 
 const LoginView = ({
   formData,
@@ -24,6 +25,9 @@ const LoginView = ({
   handleChange,
   handleSubmit,
 }: ReturnType<typeof useLoginModel>) => {
+
+
+  const { i18n } = useTranslation();
   return (
     <Main>
       <Container>
@@ -32,7 +36,8 @@ const LoginView = ({
         <Form onSubmit={handleSubmit} noValidate>
           <H1>
             <Typewriter
-              words={["Bem-vindo ao Go-Task!"]}
+              // words={["Bem-vindo ao Go-Task!"]}
+              words={i18n.t("header_title", { returnObjects: true }) as string[] }
               loop={true}
               cursor
               cursorStyle="|"

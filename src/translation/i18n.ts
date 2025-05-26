@@ -1,28 +1,18 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import ptTranslation from "../translation/language/pt";
-import enTranslation from "../translation/language/en";
+import {data} from "../translation/language"
 
 
-i18n
-
-.use(initReactI18next)
+i18n.use(initReactI18next)
 .init({
     lng: 'pt', // definição da linguagem inicial
     fallbackLng: "pt", // definição de um idioma de fallback, quando ele não encontra o patrão.
 
-    resources: {
-        pt: {
-            translation: ptTranslation,
-        },
-        en: {
-            translation: enTranslation,
-        },
-    },
+    resources: data,
     interpolation : {
-        escapeValue: false
-    }
-})
+        escapeValue: false //evitar de escapar essa sequência de traduções
+    },
+});
 
 
-export default i18n;
+export { i18n };
