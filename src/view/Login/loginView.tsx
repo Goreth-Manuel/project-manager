@@ -25,8 +25,6 @@ const LoginView = ({
   handleChange,
   handleSubmit,
 }: ReturnType<typeof useLoginModel>) => {
-
-
   const { i18n } = useTranslation();
   return (
     <Main>
@@ -36,8 +34,8 @@ const LoginView = ({
         <Form onSubmit={handleSubmit} noValidate>
           <H1>
             <Typewriter
-              // words={["Bem-vindo ao Go-Task!"]}
-              words={i18n.t("header_title", { returnObjects: true }) as string[] }
+              words={["Bem-vindo ao Go-Task!"]}
+              // words={i18n.t("header_title", { returnObjects: true }) as string[] }
               loop={true}
               cursor
               cursorStyle="|"
@@ -47,9 +45,9 @@ const LoginView = ({
             />
           </H1>
           <Paragraph>
-            A melhor plataforma de gestão de tarefas,
-            <br /> aqui você organiza, prioriza e realiza.
-            <Strong> Entre agora!</Strong>
+            {i18n.t("the_best_task_management_platform")}
+            <br /> {i18n.t("here_you_organize_prioritize_and_accomplish")}
+            <Strong> {i18n.t("join_now")} </Strong>
           </Paragraph>
 
           <InputField
@@ -86,6 +84,24 @@ const LoginView = ({
             Don't have an account?
             <Link to="/register"> Register</Link>
           </ParagraphRegistration>
+
+          <select
+            value={i18n.language}
+            onChange={(e) => {
+              const selectedLang = (e.target as HTMLSelectElement).value;
+               i18n.changeLanguage(selectedLang);
+            }}
+            style={{
+              position: "absolute",
+              top: "40rem",
+              right: "30rem",
+              width: "4rem",
+            }}
+          >
+            <option value="pt">PT</option>
+            <option value="en">EN</option>
+            <option value="fr">KMB</option>
+          </select>
         </Form>
       </Container>
     </Main>
