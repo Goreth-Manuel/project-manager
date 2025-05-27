@@ -26,6 +26,9 @@ const LoginView = ({
   handleSubmit,
 }: ReturnType<typeof useLoginModel>) => {
   const { i18n } = useTranslation();
+
+  const words = i18n.t("header_title", { returnObjects: true }) as string[];
+
   return (
     <Main>
       <Container>
@@ -35,7 +38,6 @@ const LoginView = ({
           <H1>
             <Typewriter
               words={["Bem-vindo ao Go-Task!"]}
-              // words={i18n.t("header_title", { returnObjects: true }) as string[] }
               loop={true}
               cursor
               cursorStyle="|"
@@ -45,13 +47,13 @@ const LoginView = ({
             />
           </H1>
           <Paragraph>
-            {i18n.t("the_best_task_management_platform")}
-            <br /> {i18n.t("here_you_organize_prioritize_and_accomplish")}
-            <Strong> {i18n.t("join_now")} </Strong>
+            {i18n.t("login.the_best_task_management_platform")}
+            <br /> {i18n.t("login.here_you_organize_prioritize_and_accomplish")}
+            <Strong> {i18n.t("login.join_now")} </Strong>
           </Paragraph>
 
           <InputField
-            label="E-mail"
+            label={i18n.t("login.email")}
             type="email"
             name="email"
             value={formData.email}
@@ -61,7 +63,7 @@ const LoginView = ({
           />
 
           <InputField
-            label="Senha"
+            label={i18n.t("login.password")}
             type="password"
             name="password"
             value={formData.password}
@@ -72,17 +74,17 @@ const LoginView = ({
 
           <Span>
             <LabelRemember>
-              <InputRemember type="checkbox" /> Remember me
+              <InputRemember type="checkbox" />{ i18n.t("login.remember_me")}
             </LabelRemember>
-            <a href=""> Forgot Password?</a>
+            <a href=""> {i18n.t("login.forgot_password")}</a>
           </Span>
           <br />
 
-          <Button type="submit">Iniciar Sessão</Button>
+          <Button type="submit">{i18n.t("login.login")}</Button>
 
           <ParagraphRegistration>
-            Don't have an account?
-            <Link to="/register"> Register</Link>
+            {i18n.t("login.do_not_have_an_account")}
+            <Link to="/register"> {i18n.t("login.register")}</Link>
           </ParagraphRegistration>
 
           <select
