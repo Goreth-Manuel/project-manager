@@ -100,7 +100,7 @@ const LoginView = ({
           >
             <option value="pt">PT</option>
             <option value="en">EN</option>
-            <option value="fr">KMB</option>
+            <option value="kmb">KMB</option>
           </select>
         </Form>
       </Container>
