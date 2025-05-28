@@ -27,7 +27,7 @@ const LoginView = ({
 }: ReturnType<typeof useLoginModel>) => {
   const { i18n } = useTranslation();
 
-  const words = i18n.t("header_title", { returnObjects: true }) as string[];
+  const words = i18n.t("login.header_title", { returnObjects: true }) as string[];
 
   return (
     <Main>
@@ -37,7 +37,8 @@ const LoginView = ({
         <Form onSubmit={handleSubmit} noValidate>
           <H1>
             <Typewriter
-              words={["Bem-vindo ao Go-Task!"]}
+              // words={["Bem-vindo ao Go-Task!"]}
+              words={words}
               loop={true}
               cursor
               cursorStyle="|"

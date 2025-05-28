@@ -1,6 +1,6 @@
 const data = {
   login: {
-    header_title: ["Bem-vindo ao Go-Task!"],
+    header_title: ["Kalunga ku Go-Task!"],
     the_best_task_management_platform:
       "Etu kala o plataforma y’etu ku sosa misêlu",
     here_you_organize_prioritize_and_accomplish:
